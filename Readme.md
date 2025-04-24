@@ -64,4 +64,3 @@ uvicorn
 jinja2
 ollama
 ```
- 💡
