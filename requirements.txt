@@ -1,4 +1,5 @@
 fastapi
 uvicorn
 jinja2
-ollama>=0.1.9
+pydantic
+ollama

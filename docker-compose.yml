@@ -1,27 +1,11 @@
-version: "3.9"
+version: '3.8'
 
 services:
-  llama-chatbot:
+  web:
     build: .
-    container_name: llama-chatbot
     ports:
       - "8000:8000"
     volumes:
       - .:/app
-    depends_on:
-      - ollama
     environment:
-      - OLLAMA_HOST=http://ollama:11434
-
-  ollama:
-    image: ollama/ollama
-    container_name: ollama
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    restart: unless-stopped
-    command: ["ollama", "run", "llama2"]
-
-volumes:
-  ollama_data:
+      - OLLAMA_HOST=http://host.docker.internal:11434
