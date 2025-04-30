@@ -1,4 +1,3 @@
-// script.js — логіка чату з анімаціями та бульбашками
 let userAvatarIndex = 0;
 
 function toggleTheme() {
