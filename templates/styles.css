@@ -1,0 +1,32 @@
+@keyframes fade-in-scale {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-bubble {
+  animation: fade-in-scale 0.3s ease-in-out;
+}
+
+@keyframes typing {
+  0% { transform: translateY(0); opacity: 0.3; }
+  20% { transform: translateY(-4px); opacity: 1; }
+  40% { transform: translateY(0); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 0.3; }
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background-color: #888;
+  border-radius: 50%;
+  animation: typing 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}

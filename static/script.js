@@ -1,17 +1,5 @@
-let userAvatarIndex = 0;
-
 function toggleTheme() {
   document.documentElement.classList.toggle('dark');
-}
-
-function toggleAvatarMenu() {
-  const menu = document.getElementById("avatar-menu");
-  menu.classList.toggle("hidden");
-}
-
-function setUserAvatar(index) {
-  userAvatarIndex = index;
-  toggleAvatarMenu();
 }
 
 function clearHistory() {
@@ -35,9 +23,12 @@ function createMessageBubble(content, isUser = true, isTyping = false) {
 
   const wrapper = document.createElement("div");
   wrapper.className = `${isUser ? 'bg-blue-500 text-white' : 'bg-gray-300 dark:bg-gray-600 text-black dark:text-white'} px-4 py-2 rounded-2xl max-w-[70%] shadow`;
-  wrapper.innerHTML = content;
 
-  if (isTyping) wrapper.innerHTML = `<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>`;
+  if (isTyping) {
+    wrapper.innerHTML = `<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>`;
+  } else {
+    wrapper.textContent = content;
+  }
 
   bubble.appendChild(wrapper);
   return bubble;
@@ -46,6 +37,7 @@ function createMessageBubble(content, isUser = true, isTyping = false) {
 async function sendMessage() {
   const input = document.getElementById("user-input");
   const text = input.value.trim();
+  console.log(text)
   if (!text) return;
 
   const chatBox = document.getElementById("chat-box");
@@ -72,4 +64,11 @@ async function sendMessage() {
     chatBox.removeChild(typingIndicator);
     chatBox.appendChild(createMessageBubble("⚠️ Помилка при отриманні відповіді від бота", false));
   }
+
+
 }
+
+document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
+document.getElementById("clear-history").addEventListener("click", clearHistory);
+document.getElementById("send-button").addEventListener("click", sendMessage);
+document.getElementById("user-input").addEventListener("keypress", handleKeyPress);

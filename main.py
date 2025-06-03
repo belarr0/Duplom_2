@@ -18,7 +18,7 @@ class ChatRequest(BaseModel):
 
 def query_llama(prompt: str) -> str:
     messages = [
-        {"role": "system", "content": "Ти — корисний чат-бот для підтримки психічного здоров'я. Відповідай тільки українською. "},
+        {"role": "system", "content": "imagine you are psychologist "}, #Ти — корисний чат-бот для підтримки психічного здоров'я. Відповідай тільки українською.
         {"role": "user", "content": prompt}
     ]
     try:
